@@ -59,55 +59,65 @@ class PriorityQueue {
 }
 
 function ucs(start, goal, matrix) {
-  const visited = new Set([start]); // set of visited nodes
-  const queue = new PriorityQueue(); // queue of nodes to explore, with their path and path cost
-  const gCost = new Map([[start, 0]]); // map of the cost to reach each node
-  const parentNode = new Map([[start, null]]); // map of the best path to reach each node
+  const isVisited = new Set([start]); //Set dari node yang sudah dikunjungi
+  const queue = new PriorityQueue(); // queue of nodes sort by cost
+  const gCost = new Map([[start, 0]]); //Map to keep track of the cost to reach each node 
+  const parentNode = new Map([[start, null]]); //Map of the best path to reach each node
 
-  queue.enqueue(start, 0);
+  queue.enqueue(start, 0); //
 
   while (!queue.isEmpty()) {
     const node = queue.dequeue(); // explore the node with lowest path cost
 
     if (node === goal) {
+      //Reconstruct path
       const path = [node];
-      let prev = parentNode.get(node);
+      let parent = parentNode.get(node);
 
-      while (prev!==start) {
-        path.push(prev);
-        prev = parentNode.get(prev);
+      while (parent!==start) {
+        path.push(parent);
+        parent = parentNode.get(parent);
       }
-      path.push(start);
-      path.reverse();
+      path.push(start); //Push start node
+      path.reverse(); //Reverse list
 
-      return { cost: gCost.get(node), path }; // goal found, return its cost and path
+      return { cost: gCost.get(node), path }; 
     }
 
     for (let i = 0; i < matrix[node].length; i++) {
-      if (matrix[node][i] !== 0 && !visited.has(i)) { // if there is a connection and the node hasn't been visited
-        visited.add(i);
-        const newCost = gCost.get(node) + matrix[node][i];
+      if (matrix[node][i] !== 0 && !isVisited.has(i)) { //check if nodes is connected and not visited
+        isVisited.add(i); //Add node to isVisited
+        const next=i;
+        const newCost = gCost.get(node) + matrix[node][next]; //Calculate newCost for each node
 
-        if (!gCost.has(i) || newCost < gCost.get(i)) {
-          gCost.set(i, newCost);
-          parentNode.set(i, node);
-          queue.enqueue(i, newCost);
+        if (!gCost.has(next) || newCost < gCost.get(next)) { 
+          /*
+          Check if enqueue node is needed
+          
+          ensures that the algorithm explores the path with the lowest cost to reach a node 
+          and avoids revisit nodes with higher path costs.
+
+          to save resources
+          */
+          gCost.set(i, newCost); //set new cost to reach node
+          parentNode.set(i, node); //Set new map foor path
+          queue.enqueue(i, newCost); //Enqueue node
         }
       }
     }
   }
 
-  return { cost: -1, path: [] }; // goal not found
+  return { cost: -1, path: [] }; //goal not found
 }
 
 
 
 function aStar(start,goal,matrix){
     // Initialize data structures
-    const queue = new PriorityQueue();
-    queue.enqueue(start, 0);
-    const parentNode = new Map();
-    const gCost = new Map();
+    const queue = new PriorityQueue(); //queue of nodes sort by cost
+    queue.enqueue(start, 0); 
+    const parentNode = new Map(); //Map to keep track of the cost to reach each node 
+    const gCost = new Map(); //Map to keep track of the cost to reach each node 
     parentNode.set(start, null);
     gCost.set(start, 0);
   
@@ -116,26 +126,34 @@ function aStar(start,goal,matrix){
       const current = queue.dequeue();
   
       if (current === goal) {
-            // Reconstruct path
+        // Reconstruct path
         const path = [current];
-        let prev = parentNode.get(current);
-        while (prev !== start) {
-          path.push(prev);
-          prev = parentNode.get(prev);
+        let parent = parentNode.get(current);
+        while (parent !== start) {
+          path.push(parent);
+          parent = parentNode.get(parent);
         }
-        path.push(start);
-        path.reverse();
+        path.push(start); //Push start node
+        path.reverse(); //Reverse list
         
         return {cost: gCost.get(current), path: path };
       }
   
       for (let i = 0; i < matrix.length; i++) {
-        if (matrix[current][i] !== 0) {
-          const next = i;
-          const newCost = gCost.get(current) + matrix[current][i];
+        if (matrix[current][i] !== 0) { //check if nodes is connected
+          const next = i; //neighbor node
+          const newCost = gCost.get(current) + matrix[current][i]; //Calculate newCost for each node
           if (!gCost.has(next) || newCost < gCost.get(next)) {
+            /*
+            Check if enqueue node is needed
+            
+            ensures that the algorithm explores the path with the lowest cost to reach a node 
+            and avoids revisit nodes with higher path costs.
+
+            to save resources
+          */
             gCost.set(next, newCost);
-            const priority = newCost + heuristic(next, goal);
+            const priority = newCost + heuristic(next, goal); //Set priority using heuristic
             // console.log(current); 
             // console.log(next); 
             // console.log(heuristic(next,goal)); 
