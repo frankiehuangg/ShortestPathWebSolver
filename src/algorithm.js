@@ -59,11 +59,11 @@ class PriorityQueue {
 }
 
 function ucs(start, goal, matrix) {
-  const isVisited = new Set([start]); //Set dari node yang sudah dikunjungi
-  const queue = new PriorityQueue(); // queue of nodes sort by cost
-  const gCost = new Map([[start, 0]]); //Map to keep track of the cost to reach each node 
-  const parentNode = new Map([[start, null]]); //Map of the best path to reach each node
-
+  const queue = new PriorityQueue(); //Queue of nodes sort by cost
+  const gCost = new Map(); //Map to keep track of the cost to reach each node 
+  const parentNode = new Map(); //Map of the best path to reach each node
+  parentNode.set(start, null);
+  gCost.set(start, 0);
   queue.enqueue(start, 0); //
 
   while (!queue.isEmpty()) {
@@ -85,8 +85,7 @@ function ucs(start, goal, matrix) {
     }
 
     for (let i = 0; i < matrix[node].length; i++) {
-      if (matrix[node][i] !== 0 && !isVisited.has(i)) { //check if nodes is connected and not visited
-        isVisited.add(i); //Add node to isVisited
+      if (matrix[node][i] !== 0) { //check if nodes is connected and not visited
         const next=i;
         const newCost = gCost.get(node) + matrix[node][next]; //Calculate newCost for each node
 
@@ -167,7 +166,7 @@ function aStar(start,goal,matrix){
     return {cost:-1 ,path:[]};
 }
 
-const result = ucs(0, 3, matrix2);
+const result = ucs(9, 1, matrix2);
 const result2 =aStar(9, 1, matrix2);
 console.log(result); 
 console.log(result2); 
