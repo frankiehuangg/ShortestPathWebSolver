@@ -143,47 +143,57 @@ function findShortestPath() {
 			return;
 		}
 
-
 		if (markers.length == 0) {
 			for (var i = 0; i < locations.length; i++) {
 				addMarker(locations[i]);
 			}
 		}
 
-		var steps = modes == 0 ? ucs(startNode, finishNode, distanceMatrix, locations) : aStar(startNode, finishNode, distanceMatrix, locations);
-
-		var length = steps.cost;
-		var path = steps.path;
-		var coords = [];
-
-		if (length != -1) {
-			document
-				.getElementById("length")
-				.innerHTML = "Distance: " + Math.floor(length * 1000).toString() + " m";
+		if (startNode != finishNode) {
+			var steps = modes == 0 ? ucs(startNode, finishNode, distanceMatrix) : aStar(startNode, finishNode, distanceMatrix, locations);
 	
-			for (var i = 0; i < path.length; i++) {
-				coords.push(locations[path[i]]);
+			var length = steps.cost;
+			var path = steps.path;
+			var coords = [];
+	
+			if (length != -1) {
+				document
+					.getElementById("length")
+					.innerHTML = "Distance: " + Math.floor(length * 1000).toString() + " m";
+		
+				for (var i = 0; i < path.length; i++) {
+					coords.push(locations[path[i]]);
+				}
+		
+				var pathString = (path[0] + 1).toString();
+				for (var i = 1; i < path.length; i++) {
+					pathString += " → " + (path[i] + 1).toString();
+				}
+		
+				document
+					.getElementById("path-taken")
+					.innerHTML = pathString;
+		
+				drawPath(coords, "#FF0000", 2);
 			}
+			else {
+				document
+					.getElementById("length")
+					.innerHTML = "Length: not reachable";
 	
-			var pathString = (path[0] + 1).toString();
-			for (var i = 1; i < path.length; i++) {
-				pathString += " → " + (path[i] + 1).toString();
+				document
+					.getElementById("path-taken")
+					.innerHTML = "Path not reachable";
 			}
-	
-			document
-				.getElementById("path-taken")
-				.innerHTML = pathString;
-	
-			drawPath(coords, "#FF0000", 2);
 		}
 		else {
 			document
 				.getElementById("length")
-				.innerHTML = "Length: not reachable";
+				.innerHTML = "Length: 0";
 
 			document
 				.getElementById("path-taken")
-				.innerHTML = "Path not reachable";
+				.innerHTML = "" + (startNode + 1).toString();
 		}
 	}
 }
