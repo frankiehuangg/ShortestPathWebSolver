@@ -1,40 +1,40 @@
-const matrix = [
-  [0, 4, 1, 0],
-  [4, 0, 1, 5],
-  [2, 1, 0, 3],
-  [0, 5, 3, 0]
-];
+// const matrix = [
+//   [0, 4, 1, 0],
+//   [4, 0, 1, 5],
+//   [2, 1, 0, 3],
+//   [0, 5, 3, 0]
+// ];
 
-const matrix2 = [
-  [0, 8, 0, 7, 0, 0, 0, 0, 0, 0],
-  [8, 0, 2, 0, 6, 0, 0, 0, 0, 0],
-  [0, 2, 0, 3, 0, 7, 0, 0, 0, 0],
-  [7, 0, 3, 0, 4, 0, 4, 0, 0, 0],
-  [0, 6, 0, 4, 0, 3, 0, 3, 0, 0],
-  [0, 0, 7, 0, 3, 0, 5, 0, 9, 0],
-  [0, 0, 0, 4, 0, 5, 0, 4, 0, 8],
-  [0, 0, 0, 0, 3, 0, 4, 0, 5, 0],
-  [0, 0, 0, 0, 0, 9, 0, 5, 0, 2],
-  [0, 0, 0, 0, 0, 0, 8, 0, 2, 0]
-];
-
-
-
-const nodes = [
-  { x: 1, y: 1 },
-  { x: 3, y: 1 },
-  { x: 5, y: 1 },
-  { x: 2, y: 3 },
-  { x: 4, y: 3 },
-  { x: 6, y: 3 },
-  { x: 3, y: 5 },
-  { x: 5, y: 5 },
-  { x: 4, y: 7 },
-  { x: 6, y: 7 },
-];
+// const matrix2 = [
+//   [0, 8, 0, 7, 0, 0, 0, 0, 0, 0],
+//   [8, 0, 2, 0, 6, 0, 0, 0, 0, 0],
+//   [0, 2, 0, 3, 0, 7, 0, 0, 0, 0],
+//   [7, 0, 3, 0, 4, 0, 4, 0, 0, 0],
+//   [0, 6, 0, 4, 0, 3, 0, 3, 0, 0],
+//   [0, 0, 7, 0, 3, 0, 5, 0, 9, 0],
+//   [0, 0, 0, 4, 0, 5, 0, 4, 0, 8],
+//   [0, 0, 0, 0, 3, 0, 4, 0, 5, 0],
+//   [0, 0, 0, 0, 0, 9, 0, 5, 0, 2],
+//   [0, 0, 0, 0, 0, 0, 8, 0, 2, 0]
+// ];
 
 
-function heuristic(node1, node2) {
+
+// const nodes = [
+//   { x: 1, y: 1 },
+//   { x: 3, y: 1 },
+//   { x: 5, y: 1 },
+//   { x: 2, y: 3 },
+//   { x: 4, y: 3 },
+//   { x: 6, y: 3 },
+//   { x: 3, y: 5 },
+//   { x: 5, y: 5 },
+//   { x: 4, y: 7 },
+//   { x: 6, y: 7 },
+// ];
+
+
+function heuristic(node1, node2, nodes) {
   // console.log(nodes[node2].x);
   // console.log(nodes[node1].x);
   // console.log(nodes[node2].y);
@@ -113,7 +113,7 @@ export function ucs(start, goal, matrix) {
 
 
 
-export function aStar(start,goal,matrix){
+export function aStar(start,goal,matrix,nodes){
     // Initialize data structures
     const queue = new PriorityQueue(); //queue of nodes sort by cost
     queue.enqueue(start, 0); 
@@ -154,7 +154,7 @@ export function aStar(start,goal,matrix){
             to save resources
           */
             gCost.set(next, newCost);
-            const priority = newCost + heuristic(next, goal); //Set priority using heuristic
+            const priority = newCost + heuristic(next, goal, nodes); //Set priority using heuristic
             // console.log(current); 
             // console.log(next); 
             // console.log(heuristic(next,goal)); 
@@ -169,8 +169,8 @@ export function aStar(start,goal,matrix){
 }
 
 
-const result = ucs(9, 1, matrix2);
-const result2 =aStar(9, 1, matrix2);
-console.log(result); 
-console.log(result2); 
+// const result = ucs(9, 1, matrix2);
+// const result2 =aStar(9, 1, matrix2);
+// console.log(result); 
+// console.log(result2); 
 
