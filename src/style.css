@@ -4,7 +4,7 @@
  */
  #map {
 	width: 100%;
-	height: 60vh;
+	height: 65vh;
 }
 
 .map-wrapper {
@@ -26,7 +26,7 @@ body {
 }
 .form-control-dark:focus {
 	border-color: #fff;
-	box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+	box-shadow: 0 0 0 .25rem rgba(255 255 255 .25);
 }
   
 .text-small {
@@ -59,10 +59,10 @@ body {
   .b-example-divider {
 	width: 100%;
 	height: 3rem;
-	background-color: rgba(0, 0, 0, .1);
-	border: solid rgba(0, 0, 0, .15);
+	background-color: rgba(0 0 0 .1);
+	border: solid rgba(0 0 0 .15);
 	border-width: 1px 0;
-	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+	box-shadow: inset 0 .5em 1.5em rgba(0 0 0 .1) inset 0 .125em .5em rgba(0 0 0 .15);
   }
 
   .b-example-vr {
@@ -96,7 +96,7 @@ body {
 
   .btn-bd-primary {
 	--bd-violet-bg: #712cf9;
-	--bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+	--bd-violet-rgb: 112.520718 44.062154 249.437846;
 
 	--bs-btn-font-weight: 600;
 	--bs-btn-color: var(--bs-white);
@@ -112,4 +112,19 @@ body {
   }
   .bd-mode-toggle {
 	z-index: 1500;
+  }
+
+  .b-example-divider {
+	width: 100%;
+	height: 3rem;
+	background-color: rgba(0 0 0 .1);
+	border: solid rgba(0 0 0 .15);
+	border-width: 1px 0;
+	box-shadow: inset 0 .5em 1.5em rgba(0 0 0 .1) inset 0 .125em .5em rgba(0 0 0 .15);
+  }
+
+  .b-example-vr {
+	flex-shrink: 0;
+	width: 1.5rem;
+	height: 100vh;
   }
