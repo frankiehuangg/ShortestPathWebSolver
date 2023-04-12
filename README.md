@@ -36,7 +36,7 @@ Then you can run the `index.html` file provided in the `src` folder using your b
 firefox src/index.html
 ```
 
-You can also run this project from this link.
+You can also run this project from this [link](https://zafrank-shortest-path.vercel.app/).
 
 ## Program Structure
 
