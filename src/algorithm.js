@@ -58,7 +58,7 @@ class PriorityQueue {
     }
 }
 
-function ucs(start, goal, matrix) {
+export function ucs(start, goal, matrix) {
   const isVisited = new Set([start]); //Set dari node yang sudah dikunjungi
   const queue = new PriorityQueue(); // queue of nodes sort by cost
   const gCost = new Map([[start, 0]]); //Map to keep track of the cost to reach each node 
@@ -112,7 +112,7 @@ function ucs(start, goal, matrix) {
 
 
 
-function aStar(start,goal,matrix){
+export function aStar(start,goal,matrix){
     // Initialize data structures
     const queue = new PriorityQueue(); //queue of nodes sort by cost
     queue.enqueue(start, 0); 
@@ -169,5 +169,3 @@ function aStar(start,goal,matrix){
 
 const result = ucs(0, 3, matrix2);
 const result2 =aStar(9, 1, matrix2);
-console.log(result); 
-console.log(result2); 
