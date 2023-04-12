@@ -165,7 +165,7 @@ function findShortestPath() {
 				coords.push(locations[path[i]]);
 			}
 	
-			var pathString = path[0].toString();
+			var pathString = (path[0] + 1).toString();
 			for (var i = 1; i < path.length; i++) {
 				pathString += " → " + (path[i] + 1).toString();
 			}
