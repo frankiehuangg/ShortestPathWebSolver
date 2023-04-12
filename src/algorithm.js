@@ -87,7 +87,7 @@ export function ucs(start, goal, matrix) {
     }
 
     for (let i = 0; i < matrix[node].length; i++) {
-      if (matrix[node][i] !== 0) { //check if nodes is connected and not visited
+      if (matrix[node][i] !== 0) { //check if nodes is connected
         const next=i;
         const newCost = gCost.get(node) + matrix[node][next]; //Calculate newCost for each node
 
