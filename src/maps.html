@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="light">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width initial-scale=1">
 		<title>DisCal · Calculate Distance</title>
 		<link rel="icon" type="image/x-icon" href="assets/logo.png">
 
@@ -10,8 +10,11 @@
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 		<link rel="stylesheet" type="text/css" href="./style.css" />
-		<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script type="module" src="./index.js"></script>
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -127,13 +130,10 @@
 			</div>
 		</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 		<script>
 			(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
 				key: "AIzaSyCfnYPla-y9jPA5lvJcJp5vk5yT3LlTbE8", v: "weekly"
 			});
-		</script>    
-
-		<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+		</script>
 	</body>
 </html>
