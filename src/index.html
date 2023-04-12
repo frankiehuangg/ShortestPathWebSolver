@@ -1,28 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="light">
 	<head>
 		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="viewport" content="width=device-width initial-scale=1">
 		<title>DisCal · Home</title>
 
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script type="module" src="./index.js"></script>
 	</head>
 	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+			<symbol id="moon-stars-fill" viewBox="0 0 16 16">
+				<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+				<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+			</symbol>
+			<symbol id="sun-fill" viewBox="0 0 16 16">
+				<path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+			</symbol>
+		</svg>
+
+		<div class="position-fixed bottom-0 end-0 mb-3 me-3">
+			<button class="btn btn-bd-primary py-2 d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+				<svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use id="mode-logo" href="#sun-fill"></use></svg>
+			</button>
+		</div>
+
 		<div class="container">
 			<header class="d-flex flex-wrap justify-content-center py-3 mb-4">
 				<a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-					<span class="fs-4">Title</span>
+					<img src="assets/logo.png" alt="" style="width: 50px; height:50px">
 				</a>
 				<ul class="nav nav-pills">
 					<li class="nav-item">
 						<a href="#" class="nav-link active" aria-current="page">Home</a>
-					</li>
-					<li class="nav-item">
-						<a href="features.html" class="nav-link" aria-current="page">Features</a>
 					</li>
 					<li class="nav-item">
 						<a href="maps.html" class="nav-link" aria-current="page">Maps</a>
@@ -33,5 +47,32 @@
 				</ul>
 			</header>
 		</div>
+
+		<main>
+			<div class="container px-4 pt-5 my-5 text-center border-bottom" style="height: 100vh;">
+				<h1 class="display-4 fw-bold text-body-emphasis">Shortest Path Solver</h1>
+				<div class="col-lg-6 mx-auto">
+					<p class="lead mb-4">
+						This project is aimed at solving the shortest path problem using the Uniform Cost Search (UCS) and A* algorithms. The project makes use of the Google Maps API to visualize the paths found by the algorithms.
+					</p>
+					<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+						<a href="maps.html">
+							<button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Start Solver</button>
+						</a>
+						<a href="about.html">
+							<button type="button" class="btn btn-outline-secondary btn-lg px-4">About</button>
+						</a>
+					</div>
+				</div>
+				<div style="max-height: 30vh;">
+				  <div class="container px-5">
+					<img src="assets/display.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+				  </div>
+				</div>
+			  </div>
+		</main>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+		<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
