@@ -58,12 +58,14 @@ class PriorityQueue {
     }
 }
 
-function ucs(start, goal, matrix) {
+
+export function ucs(start, goal, matrix) {
   const queue = new PriorityQueue(); //Queue of nodes sort by cost
   const gCost = new Map(); //Map to keep track of the cost to reach each node 
   const parentNode = new Map(); //Map of the best path to reach each node
   parentNode.set(start, null);
   gCost.set(start, 0);
+
   queue.enqueue(start, 0); //
 
   while (!queue.isEmpty()) {
@@ -111,7 +113,7 @@ function ucs(start, goal, matrix) {
 
 
 
-function aStar(start,goal,matrix){
+export function aStar(start,goal,matrix){
     // Initialize data structures
     const queue = new PriorityQueue(); //queue of nodes sort by cost
     queue.enqueue(start, 0); 
@@ -166,7 +168,9 @@ function aStar(start,goal,matrix){
     return {cost:-1 ,path:[]};
 }
 
+
 const result = ucs(9, 1, matrix2);
 const result2 =aStar(9, 1, matrix2);
 console.log(result); 
 console.log(result2); 
+
