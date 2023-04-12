@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google maps test</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="searchBox">
+        <input type="text" id="someInput"/>
+        <button onclick="onSendClicked()">Send</button>
+    </div>
+    <div id="map"></div>
+    <script>
+
+      var map;
+      var counter = -1;
+      var markers = [];
+
+      function onSendClicked(){
+        var textBox = document.getElementById("someInput");
+        var input = textBox.value;
+
+        var geoCoder = new google.maps.Geocoder();
+        geoCoder.geocode({'address':input}, function(results, status){
+            if (status == google.maps.GeocoderStatus.OK){
+                //if (tempMarker){
+                //  tempMarker.setMap(null);
+                //  google.maps.event.clearListeners(tempMarker, 'click');
+                //}
+                counter++;
+                var location = results[0].geometry.location;
+                map.setCenter(location);
+                var tempMarker = new google.maps.Marker({
+                  position: location,
+                  map: map,
+                  id: counter
+                });
+                map.setZoom(15);
+
+                var infoWindowHomeAddress = new google.maps.InfoWindow({
+                    content: input + "<br/><a href='#' onclick='removeMarker(" + counter + ");'>Remove marker</a>"
+                });
+
+                tempMarker.addListener('click',function(){
+                    infoWindowHomeAddress.open(tempMarker.get('map'), tempMarker);
+                });
+                markers.push(tempMarker);
+            }
+        });
+      }
+
+      function removeMarker(markerId){
+        var marker = markers[markerId];
+        google.maps.event.clearListeners(marker, 'click');
+        marker.setMap(null);
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 32.005255, lng: 34.797488},
+          zoom: 15
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfnYPla-y9jPA5lvJcJp5vk5yT3LlTbE8&callback=initMap"
+    async defer></script>
+  </body>
+</html>
